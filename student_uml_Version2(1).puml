@@ -1,0 +1,20 @@
+@startuml student_uml
+title Student UML - Encapsulation & Secure Class Design
+
+class Student {
+  - _matric_no: str
+  - _name: str
+  - _cgpa: float
+  - _tuition_balance: float
+  - _grades: Map<String, Float>
+  + __init__(matric_no: str, name: str, initial_balance: float)
+  + get_matric_no() -> str
+  + get_name() -> str
+  + get_cgpa() -> float
+  + get_tuition_balance() -> float
+  + update_cgpa(new_cgpa: float) -> None
+  + add_grade(course_code: str, score: float) -> None
+  + pay_tuition(amount: float) -> None
+  - _recalculate_cgpa() -> None
+}
+@enduml
