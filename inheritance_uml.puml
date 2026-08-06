@@ -1,0 +1,50 @@
+@startuml
+title Inheritance UML Diagram - Institutional Users
+
+' Abstract base class
+abstract class User {
+  +id: int
+  +name: String
+  +email: String
+  {abstract} +calculate_monthly_payout(): float
+}
+
+' Derived user types
+class StudentUser {
+  +student_id: String
+  +stipend_rate: float
+  +calculate_monthly_payout(): float
+}
+
+class StaffUser {
+  +employee_id: String
+  +salary_base: float
+  +calculate_monthly_payout(): float
+}
+
+' Further specializations
+class Lecturer {
+  +courses: List<String>
+  +calculate_monthly_payout(): float
+}
+
+class GraduateAssistant {
+  +assistantship_hours: int
+  +ta_rate: float
+  +calculate_monthly_payout(): float
+}
+
+' Relationships
+User <|-- StudentUser
+User <|-- StaffUser
+StaffUser <|-- Lecturer
+StudentUser <|-- GraduateAssistant
+StaffUser <|-- GraduateAssistant
+
+note right of GraduateAssistant
+  GraduateAssistant is a hybrid role that
+  specializes concepts from both StudentUser
+  and StaffUser (teaching assistantship + stipend).
+end note
+
+@enduml
